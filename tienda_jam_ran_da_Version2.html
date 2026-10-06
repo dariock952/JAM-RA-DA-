@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAM-RAN-DA | Perfumería Árabe Masculina de Lujo</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#FDF7E7',
+                            300: '#E6C687',
+                            400: '#D4AF37',
+                            500: '#C5A059',
+                            600: '#A37F35',
+                            700: '#7A5E24',
+                        },
+                        darkness: '#0A0A0B',
+                        cardDark: '#121215',
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0A0A0B;
+            color: #E2E8F0;
+        }
+        .font-serif-title {
+            font-family: 'Cinzel', serif;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0CA 0%, #D4AF37 50%, #997827 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border-glow {
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.05);
+        }
+        .gold-border-glow:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.18);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #121215;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2D2514;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+    </style>
+</head>
+
+<body class="bg-darkness text-gray-200 antialiased min-h-screen flex flex-col justify-between">
+    <div>
+        <!-- Top Announcement Banner -->
+        <div class="bg-gradient-to-r from-gold-700 via-gold-500 to-gold-700 text-black text-xs font-bold py-2 px-4 text-center tracking-wider uppercase flex justify-center items-center gap-2">
+            <i data-lucide="shield-check" class="w-4 h-4"></i>
+            <span>JAM-RAN-DA • Perfumes Árabes 100% Originales e Importados • Atención Personalizada</span>
+        </div>
+
+        <!-- Navigation Header -->
+        <header class="sticky top-0 z-40 bg-darkness/90 backdrop-blur-md border-b border-gold-400/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                
+                <!-- Brand Logo -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="resetFilters()">
+                    <div class="w-10 h-10 rounded-full border border-gold-400/50 flex items-center justify-center bg-gold-400/10">
+                        <i data-lucide="crown" class="w-6 h-6 text-gold-400"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-serif-title text-2xl sm:text-3xl font-bold tracking-widest gold-gradient-text">JAM-RAN-DA</h1>
+                        <p class="text-[10px] tracking-[0.25em] text-gold-400/80 uppercase font-medium">Alta Perfumería Masculina</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Quick Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#catalogo" class="hover:text-gold-400 transition-colors">Catálogo VIP</a>
+                    <a href="#garantia" class="hover:text-gold-400 transition-colors">Garantía de Origen</a>
+                    <a href="#contacto" class="hover:text-gold-400 transition-colors">Cotización Directa</a>
+                </nav>
+
+                <!-- Actions: Cart Trigger -->
+                <div class="flex items-center space-x-4">
+                    <button onclick="toggleCartModal()" class="relative p-2.5 rounded-full bg-cardDark border border-gold-400/30 text-gold-400 hover:bg-gold-400/10 transition-all flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-5 h-5"></i>
+                        <span class="hidden sm:inline text-xs font-semibold">Lista de Cotización</span>
+                        <span id="cart-badge" class="bg-gold-500 text-black font-bold text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="relative bg-gradient-to-b from-darkness via-cardDark to-darkness py-16 sm:py-24 border-b border-gold-400/10 overflow-hidden">
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <span class="inline-flex items-center gap-1.5 py-1 px-3.5 rounded-full text-xs font-semibold bg-gold-400/10 border border-gold-400/30 text-gold-400 mb-6 uppercase tracking-widest">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Colección Exclusiva de Tendencias 100ml
+                </span>
+                <h2 class="font-serif-title text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+                    Presencia, Potencia y Distinción Oriental
+                </h2>
+                <p class="max-w-2xl mx-auto text-gray-400 text-base sm:text-lg mb-8 leading-relaxed">
+                    Seleccionamos los perfumes árabes masculinos más virales y codiciados del momento. Agrega tus elegidos a la lista y solicita tu cotización inmediata con envío rápido.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#catalogo" class="px-8 py-3.5 rounded-md bg-gradient-to-r from-gold-500 to-gold-700 text-black font-bold text-sm hover:from-gold-400 hover:to-gold-600 transition-all shadow-lg shadow-gold-500/20 uppercase tracking-wider flex items-center gap-2">
+                        Ver Catálogo de Frascos <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Catalog Section -->
+        <section id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-gold-400/20">
+                <div>
+                    <h3 class="font-serif-title text-2xl font-bold text-white flex items-center gap-2">
+                        <i data-lucide="flame" class="w-6 h-6 text-gold-400"></i> Perfumes Árabes en Tendencia
+                    </h3>
+                    <p class="text-xs text-gray-400 mt-1">Selecciona los perfumes que deseas consultar y cotiza por WhatsApp</p>
+                </div>
+
+                <!-- Search Input -->
+                <div class="relative w-full md:w-80">
+                    <i data-lucide="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+                    <input type="text" id="search-input" oninput="filterProducts()" placeholder="Buscar (ej. Hawas, 9PM, Khamrah)..." class="w-full bg-cardDark border border-gold-400/30 rounded-lg pl-10 pr-4 py-2 text-sm text-white focus:outline-none focus:border-gold-400 transition-colors">
+                </div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap gap-2.5 mt-6" id="filter-buttons">
+                <button onclick="setCategory('all')" class="filter-btn active-filter px-4 py-2 rounded-full text-xs font-semibold transition-all bg-gold-500 text-black border border-gold-400" data-cat="all">Todos los Perfumes</button>
+                <button onclick="setCategory('Fresco / Acuático')" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold transition-all bg-cardDark text-gray-300 border border-gold-400/20 hover:border-gold-400/50" data-cat="Fresco / Acuático">❄️ Frescos / Helados</button>
+                <button onclick="setCategory('Cítrico / Gourmand')" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold transition-all bg-cardDark text-gray-300 border border-gold-400/20 hover:border-gold-400/50" data-cat="Cítrico / Gourmand">🍊 Cítricos Gourmand</button>
+                <button onclick="setCategory('Dulce / Nocturno')" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold transition-all bg-cardDark text-gray-300 border border-gold-400/20 hover:border-gold-400/50" data-cat="Dulce / Nocturno">🌙 Dulces / Seducción</button>
+                <button onclick="setCategory('Cálido / Café')" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold transition-all bg-cardDark text-gray-300 border border-gold-400/20 hover:border-gold-400/50" data-cat="Cálido / Café">☕ Especiados / Qahwa</button>
+                <button onclick="setCategory('Amaderado / Frutal')" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold transition-all bg-cardDark text-gray-300 border border-gold-400/20 hover:border-gold-400/50" data-cat="Amaderado / Frutal">🪵 Amaderado / Sublime</button>
+            </div>
+
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-8">
+                <!-- Products inserted dynamically by JS -->
+            </div>
+        </section>
+
+        <!-- Trust Features -->
+        <section id="garantia" class="bg-cardDark/50 border-y border-gold-400/10 py-16 my-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="p-6 rounded-xl border border-gold-400/10 bg-cardDark">
+                        <div class="w-12 h-12 rounded-full bg-gold-400/10 border border-gold-400/30 flex items-center justify-center mx-auto mb-4 text-gold-400">
+                            <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-serif-title text-lg font-bold text-white mb-2">Originalidad Garantizada</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">Perfumes importados directamente en sus frascos y cajas originales selladas de 100ml.</p>
+                    </div>
+                    <div class="p-6 rounded-xl border border-gold-400/10 bg-cardDark">
+                        <div class="w-12 h-12 rounded-full bg-gold-400/10 border border-gold-400/30 flex items-center justify-center mx-auto mb-4 text-gold-400">
+                            <i data-lucide="message-square" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-serif-title text-lg font-bold text-white mb-2">Cotización Inmediata</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">Respuesta rápida por WhatsApp con disponibilidad de stock y mejores precios según tu ubicación.</p>
+                    </div>
+                    <div class="p-6 rounded-xl border border-gold-400/10 bg-cardDark">
+                        <div class="w-12 h-12 rounded-full bg-gold-400/10 border border-gold-400/30 flex items-center justify-center mx-auto mb-4 text-gold-400">
+                            <i data-lucide="truck" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-serif-title text-lg font-bold text-white mb-2">Envíos Seguros</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">Embalaje reforzado e insustituible para asegurar que la botella llegue intacta a tus manos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contacto" class="bg-black border-t border-gold-400/20 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-gold-400/10 pb-8">
+                <div>
+                    <h2 class="font-serif-title text-2xl font-bold gold-gradient-text tracking-widest">JAM-RAN-DA</h2>
+                    <p class="text-xs text-gray-500 mt-1">Venta Exclusive de Perfumería Árabe Masculina</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="https://wa.me/?text=Hola%20JAM-RAN-DA,%20quisiera%20consultar%20precios%20y%20disponibilidad%20de%20sus%20perfumes%20arabes" target="_blank" class="px-6 py-3 rounded-md bg-emerald-600/20 border border-emerald-500/40 text-emerald-400 hover:bg-emerald-600/30 transition-all text-xs font-semibold flex items-center gap-2">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i> Consultar por WhatsApp
+                    </a>
+                </div>
+            </div>
+            <div class="pt-8 text-center text-xs text-gray-600 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p>&copy; 2026 JAM-RAN-DA. Todos los derechos reservados.</p>
+                <p class="text-gray-500">Frascos de 100ml | Tendencias de Perfumería de Oriente</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Detail Modal -->
+    <div id="detail-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-cardDark border border-gold-400/30 rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl relative max-h-[90vh] flex flex-col">
+            <button onclick="closeDetailModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/60 border border-gold-400/30 text-gray-300 hover:text-white flex items-center justify-center">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div id="modal-content" class="overflow-y-auto custom-scrollbar p-6">
+                <!-- Content inserted via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Quote Cart Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex justify-end">
+        <div class="bg-cardDark border-l border-gold-400/30 w-full max-w-md h-full flex flex-col justify-between shadow-2xl">
+            <!-- Header -->
+            <div class="p-6 border-b border-gold-400/20 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="file-text" class="w-5 h-5 text-gold-400"></i>
+                    <h3 class="font-serif-title text-xl font-bold text-white">Solicitud de Cotización</h3>
+                </div>
+                <button onclick="toggleCartModal()" class="text-gray-400 hover:text-white">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+
+            <!-- Items List -->
+            <div id="cart-items" class="p-6 overflow-y-auto custom-scrollbar flex-1 space-y-4">
+                <!-- Rendered dynamically -->
+            </div>
+
+            <!-- Footer Action -->
+            <div class="p-6 border-t border-gold-400/20 bg-darkness/80">
+                <p class="text-xs text-gray-400 mb-4 text-center">Te enviaremos los precios actualizados y métodos de pago de tus perfumes seleccionados.</p>
+                <button onclick="checkoutWhatsApp()" class="w-full py-3.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-lg shadow-emerald-900/30">
+                    <i data-lucide="send" class="w-5 h-5"></i> Pedir Cotización por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Data and Functions -->
+    <script>
+        // Exact 7 perfumes requested with high-resolution imagery and detailed notes
+        const products = [
+            {
+                id: 'hawas-ice',
+                name: 'HAWAS ICE 100ML',
+                brand: 'Rasasi',
+                category: 'Fresco / Acuático',
+                badge: 'Novedad Helada',
+                image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=800',
+                description: 'Versión repotenciada y ultra refrescante del clásico Hawas. Salida de cítricos congelados y manzana verde helada con un fondo acuático limpio de enorme duración.',
+                notes: {
+                    top: 'Manzana Helada, Cítricos Italianos, Anís Estrellado, Menta',
+                    heart: 'Flor de Azahar, Cardamomo, Ciruela Dulce',
+                    base: 'Almizcle Blanco, Ámbar Gris, Granos de Tonka, Liquen'
+                }
+            },
+            {
+                id: '9am-dive',
+                name: '9AM DIVE 100ML',
+                brand: 'Afnan Perfumes',
+                category: 'Fresco / Acuático',
+                badge: 'Versátil & Diario',
+                image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&q=80&w=800',
+                description: 'Perfume fresco, marino y efervescente. Combina la pulcritud de las notas oceánicas con frutos de verano. Perfecto para el día a día y climas calurosos.',
+                notes: {
+                    top: 'Menta Fresca, Menta, Limón de Amalfi, Grosella Negra',
+                    heart: 'Manzana Verde, Incienso Claro, Cedro de Virginia',
+                    base: 'Jengibre, Sándalo, Jazmín, Pachulí'
+                }
+            },
+            {
+                id: 'badee-al-oud-sublime',
+                name: 'BADEE AL OUD SUBLIME 100ML',
+                brand: 'Lattafa Perfumes',
+                category: 'Amaderado / Frutal',
+                badge: 'Lujo Rojo',
+                image: 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&q=80&w=800',
+                description: 'Opulenta creación frutal y amaderada. Destaca por su aroma a manzana crujiente, rosa silvestre, ciruela jugosa y una madera sutil con musgo elegante.',
+                notes: {
+                    top: 'Manzana, Rosa de Bulgaria, Ciruela',
+                    heart: 'Jazmín Mantecoso, Nardo, Hojas de Violeta',
+                    base: 'Vainilla, Oud Creado, Pachulí, Musgo de Roble'
+                }
+            },
+            {
+                id: 'odyssey-mandarin-sky',
+                name: 'ODYSSEY MANDARIN SKY 100ML',
+                brand: 'Armaf',
+                category: 'Cítrico / Gourmand',
+                badge: 'Favorito Viral',
+                image: 'https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=800',
+                description: 'Combinación cítrico-caramelizada irresistible. Abre con explosión de mandarina jugosa que se fusiona con caramelo espeso y notas ambaradas cálidas.',
+                notes: {
+                    top: 'Mandarina Madura, Naranja Dulce, Salvia',
+                    heart: 'Caramelo Tostado, Habia Tonka, Cítricos',
+                    base: 'Ambrosan, Madera de Cedro, Vetiver'
+                }
+            },
+            {
+                id: '9pm-night-out',
+                name: '9PM Night Out Afnan For women and men',
+                brand: 'Afnan Perfumes',
+                category: 'Dulce / Nocturno',
+                badge: 'Bomba Nocturna',
+                image: 'https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&q=80&w=800',
+                description: 'La fragancia nocturna por excelencia. Un aroma dulce seductor cargado de canela, manzana crocante y fondo de vainilla sensual con gran estela.',
+                notes: {
+                    top: 'Manzana Silvestre, Canela, Lavanda, Bergamota',
+                    heart: 'Flor de Azahar del Naranjo, Lirio de los Valles',
+                    base: 'Vainilla Bourbon, Habia Tonka, Ámbar, Pachulí'
+                }
+            },
+            {
+                id: 'hawas-fire',
+                name: 'HAWAS FIRE 100ML',
+                brand: 'Rasasi',
+                category: 'Cálido / Café',
+                badge: 'Edición Intensa',
+                image: 'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=800',
+                description: 'Flanker fuego con personalidad cálida, especiada y magnética. Incorpora acordes ahumados y de pimienta con una madera roja vibrante y envolvente.',
+                notes: {
+                    top: 'Pimienta Roja, Especias Cálidas, Bergamota',
+                    heart: 'Acorde de Fuego, Incienso, Madera de Cedro',
+                    base: 'Ámbar Intenso, Cuero Suave, Pachulí, Vainilla'
+                }
+            },
+            {
+                id: 'khamrah-qahwa',
+                name: 'Khamrah QaHwa',
+                brand: 'Lattafa Perfumes',
+                category: 'Cálido / Café',
+                badge: 'Gourmand de Café',
+                image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&q=80&w=800',
+                description: 'Evolución de la mítica Khamrah enriquecida con la calidez del café arábigo recién tostado (Qahwa), praliné dulce, canela y cardamomo espeso.',
+                notes: {
+                    top: 'Jengibre, Canela, Cardamomo',
+                    heart: 'Café Arábigo (Qahwa), Praliné, Frutos Confitados',
+                    base: 'Habia Tonka, Vainilla, Benzoin, Maderas Nobles'
+                }
+            }
+        ];
+
+        // State Management
+        let cart = [];
+        let activeCategory = 'all';
+
+        // Initialize Application
+        window.onload = function() {
+            renderProducts();
+            lucide.createIcons();
+        };
+
+        function renderProducts() {
+            const container = document.getElementById('products-grid');
+            const searchVal = document.getElementById('search-input').value.toLowerCase();
+
+            const filtered = products.filter(p => {
+                const matchesCat = activeCategory === 'all' || p.category === activeCategory;
+                const matchesSearch = p.name.toLowerCase().includes(searchVal) || p.brand.toLowerCase().includes(searchVal);
+                return matchesCat && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-gray-500">
+                        <i data-lucide="search-x" class="w-12 h-12 mx-auto mb-3 opacity-50"></i>
+                        <p class="text-base font-semibold">No se encontraron perfumes con ese nombre.</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            container.innerHTML = filtered.map(product => `
+                <div class="bg-cardDark rounded-xl overflow-hidden gold-border-glow transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <!-- Image Container -->
+                        <div class="relative h-64 overflow-hidden bg-black/60 flex items-center justify-center p-4">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100 rounded-lg">
+                            <div class="absolute inset-0 bg-gradient-to-t from-cardDark via-transparent to-transparent"></div>
+                            <span class="absolute top-3 left-3 bg-black/80 backdrop-blur-md border border-gold-400/40 text-gold-400 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                                ${product.badge}
+                            </span>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="p-5">
+                            <span class="text-[11px] text-gold-400/80 font-medium block mb-1">${product.brand}</span>
+                            <h4 class="font-serif-title text-lg font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">${product.name}</h4>
+                            <p class="text-xs text-gray-400 line-clamp-2 leading-relaxed mb-4">${product.description}</p>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="p-5 pt-0">
+                        <div class="flex items-center justify-between py-2 border-t border-gold-400/10 mb-3">
+                            <span class="text-xs text-gold-400 font-semibold flex items-center gap-1">
+                                <i data-lucide="check" class="w-3.5 h-3.5"></i> Presentación 100ml
+                            </span>
+                            <span class="text-[11px] text-gray-400 bg-gold-400/10 px-2 py-0.5 rounded border border-gold-400/20">Precio por WA</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="openDetailModal('${product.id}')" class="py-2.5 px-3 rounded-lg bg-black border border-gold-400/30 text-gold-400 text-xs font-semibold hover:bg-gold-400/10 transition-colors flex items-center justify-center gap-1.5">
+                                <i data-lucide="eye" class="w-3.5 h-3.5"></i> Ver Notas
+                            </button>
+                            <button onclick="addToCart('${product.id}')" class="py-2.5 px-3 rounded-lg bg-gradient-to-r from-gold-500 to-gold-600 text-black text-xs font-bold hover:from-gold-400 hover:to-gold-500 transition-all flex items-center justify-center gap-1.5 shadow-md">
+                                <i data-lucide="plus" class="w-3.5 h-3.5"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        // Filtering Logic
+        function setCategory(cat) {
+            activeCategory = cat;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.className = "filter-btn active-filter px-4 py-2 rounded-full text-xs font-semibold transition-all bg-gold-500 text-black border border-gold-400";
+                } else {
+                    btn.className = "filter-btn px-4 py-2 rounded-full text-xs font-semibold transition-all bg-cardDark text-gray-300 border border-gold-400/20 hover:border-gold-400/50";
+                }
+            });
+            renderProducts();
+        }
+
+        function filterProducts() {
+            renderProducts();
+        }
+
+        function resetFilters() {
+            document.getElementById('search-input').value = '';
+            setCategory('all');
+        }
+
+        function openDetailModal(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return;
+
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="relative rounded-xl overflow-hidden bg-black flex items-center justify-center p-4 border border-gold-400/20">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-72 md:h-full object-cover rounded-lg">
+                    </div>
+                    <div class="flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-gold-400 uppercase tracking-widest">${product.brand}</span>
+                            <h3 class="font-serif-title text-2xl font-bold text-white mb-2">${product.name}</h3>
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="bg-gold-500/10 border border-gold-500/30 text-gold-400 text-[10px] font-bold px-2.5 py-0.5 rounded-full">${product.category}</span>
+                            </div>
+                            <p class="text-xs text-gray-300 leading-relaxed mb-6">${product.description}</p>
+                            
+                            <!-- Olfactory Pyramid -->
+                            <div class="bg-black/60 p-4 rounded-xl border border-gold-400/20 space-y-3 mb-6">
+                                <h4 class="font-serif-title text-xs font-bold text-gold-400 uppercase tracking-wider flex items-center gap-1.5">
+                                    <i data-lucide="wind" class="w-4 h-4"></i> Pirámide Olfativa
+                                </h4>
+                                <div class="text-xs">
+                                    <span class="text-gold-400 font-semibold block">Notas de Salida:</span>
+                                    <p class="text-gray-300">${product.notes.top}</p>
+                                </div>
+                                <div class="text-xs">
+                                    <span class="text-gold-400 font-semibold block">Notas de Corazón:</span>
+                                    <p class="text-gray-300">${product.notes.heart}</p>
+                                </div>
+                                <div class="text-xs">
+                                    <span class="text-gold-400 font-semibold block">Notas de Fondo:</span>
+                                    <p class="text-gray-300">${product.notes.base}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button onclick="quoteSingleWhatsApp('${product.name}')" class="w-full mb-2 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2">
+                                <i data-lucide="message-circle" class="w-4 h-4"></i> Consultar Precio Directo
+                            </button>
+                            <button onclick="addToCart('${product.id}'); closeDetailModal();" class="w-full py-3 rounded-lg bg-black border border-gold-400/40 text-gold-400 font-bold text-xs uppercase tracking-wider hover:bg-gold-400/10 transition-all flex items-center justify-center gap-2">
+                                <i data-lucide="plus" class="w-4 h-4"></i> Añadir a mi Lista de Cotización
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('detail-modal').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detail-modal').classList.add('hidden');
+        }
+
+        function toggleCartModal() {
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
+
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartUI();
+            toggleCartModal();
+        }
+
+        function updateQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+
+            item.quantity += delta;
+            if (item.quantity <= 0) {
+                cart = cart.filter(i => i.id !== productId);
+            }
+
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            const badgeElem = document.getElementById('cart-badge');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            badgeElem.textContent = totalItems;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-gray-500">
+                        <i data-lucide="file-text" class="w-12 h-12 mx-auto mb-3 opacity-30"></i>
+                        <p class="text-sm">No has agregado perfumes a tu lista.</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            container.innerHTML = cart.map(item => `
+                <div class="flex items-center gap-4 bg-black/40 p-3 rounded-lg border border-gold-400/10">
+                    <img src="${item.image}" alt="${item.name}" class="w-14 h-14 object-cover rounded-md">
+                    <div class="flex-1">
+                        <h4 class="font-serif-title text-xs font-bold text-white">${item.name}</h4>
+                        <span class="text-[10px] text-gold-400">Presentación 100ml</span>
+                        <div class="flex items-center gap-2 mt-2">
+                            <button onclick="updateQuantity('${item.id}', -1)" class="w-6 h-6 rounded bg-cardDark text-white border border-gold-400/20 flex items-center justify-center text-xs">-</button>
+                            <span class="text-xs font-bold text-white px-2">${item.quantity} frasco(s)</span>
+                            <button onclick="updateQuantity('${item.id}', 1)" class="w-6 h-6 rounded bg-cardDark text-white border border-gold-400/20 flex items-center justify-center text-xs">+</button>
+                        </div>
+                    </div>
+                    <button onclick="updateQuantity('${item.id}', -${item.quantity})" class="text-gray-500 hover:text-red-400 p-1">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        function quoteSingleWhatsApp(productName) {
+            const message = `Hola JAM-RAN-DA, quisiera consultar el precio y disponibilidad del perfume: *${productName}*.`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert("Agrega al menos un perfume a tu lista de cotización.");
+                return;
+            }
+
+            let message = "👑 *SOLICITUD DE COTIZACIÓN - JAM-RAN-DA PERFUMES*\n\n";
+            message += "Hola, me gustaría consultar precios y disponibilidad para la siguiente lista de perfumes:\n\n";
+
+            cart.forEach(item => {
+                message += `▪️ *${item.name}* (${item.brand})\n`;
+                message += `   Cantidad: ${item.quantity} frasco(s) de 100ml\n\n`;
+            });
+
+            message += "Quedo a la espera de la cotización y métodos de envío disponible. ¡Muchas gracias!";
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/?text=${encodedMessage}`, '_blank');
+        }
+    </script>
+</body>
+</html>
